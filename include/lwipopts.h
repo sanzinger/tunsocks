@@ -47,7 +47,7 @@
 #define MEMP_NUM_TCP_PCB_LISTEN		1024
 #define MEMP_NUM_TCP_SEG		8192
 #define MEMP_NUM_REASSDATA		256
-#define MEMP_NUM_FRAG_PBUF		16*1024
+#define MEMP_NUM_FRAG_PBUF		1024
 #define MEMP_NUM_TCPIP_MSG_API		1024
 #define MEMP_NUM_TCPIP_MSG_INPKT	1024
 
@@ -63,7 +63,7 @@
 
 #define TCP_MSS				1500
 #define TCP_WND                         4*(256*1024)
-#define TCP_SND_QUEUELEN                4*8192
+#define TCP_SND_QUEUELEN                8192
 #define TCP_SND_BUF                     65535
 #define TCP_RCV_SCALE			8
 
