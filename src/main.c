@@ -44,7 +44,7 @@ static char *tokenize(const char *str, const char *sep, char **endptr)
 	return strndup(str, i);
 }
 
-static struct conn_info *parse_conn_info(const char *str, int fmax)
+static struct conn_info *parse_conn_info(const char *str, int fmax, int bind_address)
 {
 	int fields = 1;
 	int f0;
@@ -59,24 +59,24 @@ static struct conn_info *parse_conn_info(const char *str, int fmax)
 			fields++;
 		}
 
-	f0 = fields == 4 ? 1 : 0;
+	f0 = (bind_address && fields == fmax) ? 1 : 0;
 
 	info = calloc(1, sizeof(*info));
 
 	info->bind_port = strndup(field[f0], field[f0 + 1] - field[f0] - 1);
 
-	if (fields == 4)
+	if (bind_address && fields == fmax)
 		info->bind = strndup(field[0], field[1] - field[0] - 1);
 	else
 		info->bind = NULL;
 
-	if (fields >= 3)
+	if (fields >= f0 + 3)
 		info->host_port = strndup(field[f0 + 2],
 					field[f0 + 3] - field[f0 + 2] - 1);
 	else
 		info->host_port = strdup(info->bind_port);
 
-	if (fields >= 2)
+	if (fields >= f0 + 2)
 		info->host = strndup(field[f0 + 1],
 					field[f0 + 2] - field[f0 + 1] - 1);
 	else
@@ -186,7 +186,7 @@ int main(int argc, char *argv[])
 
 		switch (c) {
 		case 'L':
-			info = parse_conn_info(optarg, 4);
+			info = parse_conn_info(optarg, 4, 1);
 			if (!info)
 				print_usage(argv[0]);
 
@@ -194,7 +194,7 @@ int main(int argc, char *argv[])
 			local = info;
 			break;
 		case 'D':
-			info = parse_conn_info(optarg, 2);
+			info = parse_conn_info(optarg, 2, 1);
 			if (!info)
 				print_usage(argv[0]);
 
@@ -202,7 +202,7 @@ int main(int argc, char *argv[])
 			socks = info;
 			break;
 		case 'R':
-			info = parse_conn_info(optarg, 3);
+			info = parse_conn_info(optarg, 3, 0);
 			if (!info)
 				print_usage(argv[0]);
 
