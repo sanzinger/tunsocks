@@ -16,6 +16,7 @@
 #include "forward_remote.h"
 #include "tunif.h"
 #include "libevent.h"
+#include <lwip/src/include/lwip/ip4_addr.h>
 
 struct conn_info {
 	char *bind;

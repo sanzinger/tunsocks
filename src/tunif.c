@@ -9,9 +9,9 @@
 #include <lwip/stats.h>
 #include <lwip/ip4.h>
 #include <lwip/init.h>
-#include <lwip/tcp_impl.h>
+#include <lwip/src/include/lwip/ip.h>
 #include <lwip/dns.h>
-#include <lwip/snmp_mib2.h>
+#include <lwip/src/include/lwip/snmp.h>
 
 #ifdef USE_PCAP
 #include <pcap/pcap.h>

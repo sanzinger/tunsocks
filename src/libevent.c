@@ -41,14 +41,12 @@
 
 #include "lwip/opt.h"
 
-#include "lwip/timers.h"
-#include "lwip/tcp_impl.h"
-
 #include "lwip/def.h"
 #include "lwip/memp.h"
 #include "lwip/tcpip.h"
 
-#include "lwip/ip_frag.h"
+#include "lwip/ip4_frag.h"
+#include "lwip/src/include/lwip/priv/tcp_priv.h"
 #include "netif/etharp.h"
 #include "lwip/dhcp.h"
 #include "lwip/autoip.h"

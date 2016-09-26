@@ -3,7 +3,6 @@
 #include <event2/buffer.h>
 #include <event2/listener.h>
 #include <lwip/tcp.h>
-#include <lwip/tcp_impl.h>
 
 #include "pipe.h"
 

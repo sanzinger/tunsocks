@@ -29,7 +29,8 @@ tunsocks_SOURCES = \
 	lwip/src/core/ipv4/icmp.c \
 	lwip/src/core/ipv4/ip4.c \
 	lwip/src/core/ipv4/ip4_addr.c \
-	lwip/src/core/ipv4/ip_frag.c \
+	lwip/src/core/ipv4/ip4_frag.c \
+	lwip/src/core/ip.c \
 	src/libevent.c \
 	src/socks4.c \
 	src/socks5.c \
